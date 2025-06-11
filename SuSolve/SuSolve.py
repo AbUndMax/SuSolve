@@ -3,13 +3,6 @@ from SudokuMatrix import SudokuMatrix
 from resources.example_sudokus import examples
 import argparse
 
-def debug_check(sudoku_matrix):
-    while (user := input("input cell index -> row,col")) != "q":
-        user_in = user.split(",")
-        for cell in sudoku_matrix._sudoku_matrix[int(user_in[0])][int(user_in[1])].block:
-            print(cell.value)
-            
-
 def solve_sudoku(sudoku_matrix):
     
     def fill_possibilities(sudoku_matrix):

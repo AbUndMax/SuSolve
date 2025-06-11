@@ -276,7 +276,7 @@ class SudokuMatrix:
         return matrix_string
     
         
-    def print_matrix(self, i=None, j=None, showPossibilities=False, showCellValues = True):
+    def print_matrix(self, i=None, j=None, showPossibilities=False, showCellValues=True):
         """
         Gibt das Sudoku-Gitter als ASCII-Grafik auf der Konsole aus.
 
