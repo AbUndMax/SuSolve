@@ -1,42 +1,7 @@
 # Simple Sudoku solver program
 from SudokuMatrix import SudokuMatrix
+from resources.example_sudokus import examples
 import argparse
-
-easy = """
-9, -, 2, 1, 5, 4, -, -, 7;
--, 7, -, 2, 8, 9, 5, 1, -;
- , 8, 5,  ,  , 7,  , 9,  ;
-4, -, 6, -, 7, -, -, -, 3;
--, 1, -, 9, 6, -, -, 5, -;
--, 5, -, 8, 4, 2, 1, -, -;
--, -, -, 4, -, 5, -, -, -;
--, 3, 1, -, -, 6, 9, 4, -;
--, 4, -, -, 1, -, -, -, -
-"""
-
-hard = """
-3, -, -, -, -, -, -, -, 9;
--, -, -, -, 7, -, 1, -, 2;
--, -, -, -, -, 9, 5, -, -;
--, 7, -, -, 5, -, -, -, -;
-1, -, -, 4, -, -, 6, 8, -;
--, -, 6, -, -, -, -, -, -;
-7, 1, -, -, 9, -, -, -, 5;
--, -, -, -, -, 3, 8, -, -;
-4, -, -, -, -, -, -, 2, -
-"""
-
-xWing = """
--, -, 3, 8, -, -, 5, 1, -;
--, -, 8, 7, -, -, 9, 3, -;
-1, -, -, 3, -, 5, 7, 2, 8;
--, -, -, 2, -, -, 8, 4, 9;
-8, -, 1, 9, -, 6, 2, 5, 7;
--, -, -, 5, -, -, 1, 6, 3;
-9, 6, 4, 1, 2, 7, 3, 8, 5;
-3, 8, 2, 6, 5, 9, 4, 7, 1;
--, 1, -, 4, -, -, 6, 9, 2
-"""
 
 def debug_check(sudoku_matrix):
     while (user := input("input cell index -> row,col")) != "q":
@@ -151,7 +116,7 @@ def main():
     sudoku_matrix = SudokuMatrix()
         
     # read in a sudoku that should be solved
-    sudoku_matrix.read_from_string(xWing)
+    sudoku_matrix.read_from_string(examples["easy"])
     
     print("\n>>> Initial Sudoku:")
     sudoku_matrix.print_matrix()
