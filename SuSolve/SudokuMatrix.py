@@ -201,27 +201,27 @@ class SudokuMatrix:
         
     def _generate_matrix_string(self, i=None, j=None, showPossibilities=False, showCellValues=True):
         """
-        Erstellt eine formatierte String-Darstellung des Sudoku-Gitters.
+        Creates a formatted string representation of the Sudoku grid.
 
-        Jede Zelle wird als ASCII-Grafik dargestellt. 
-        - Zellen mit festem Wert werden mit einem Rahmen und dem Wert in der Mitte angezeigt:
-        ┌───────┐
-        │>╔═══╗<│
-        │>║ 5 ║<│
-        │>╚═══╝<│
-        └───────┘
-        
-        - Leere Zellen zeigen (optional) die möglichen Werte als kleine Zahlen an den jeweiligen Positionen.
-        - Optional kann eine bestimmte Zelle (i, j) hervorgehoben werden.
-        - Mit showPossibilities=True werden die möglichen Werte in leeren Zellen angezeigt.
+        Each cell is displayed as an ASCII graphic.
+        - Cells with a fixed value are shown with a frame and the value in the center:
+          ┌───────┐
+          │>╔═══╗<│
+          │>║ 5 ║<│
+          │>╚═══╝<│
+          └───────┘
+
+        - Empty cells optionally display possible values as small numbers in their respective positions.
+        - Optionally, a specific cell (i, j) can be highlighted.
+        - If showPossibilities=True, possible values are shown in empty cells.
 
         Args:
-            i (int, optional): Zeilenindex der zu markierenden Zelle.
-            j (int, optional): Spaltenindex der zu markierenden Zelle.
-            showPossibilities (bool, optional): Zeigt mögliche Werte in leeren Zellen an, wenn True.
+            i (int, optional): Row index of the cell to highlight.
+            j (int, optional): Column index of the cell to highlight.
+            showPossibilities (bool, optional): If True, possible values are shown in empty cells.
 
         Returns:
-            str: Die ASCII-Darstellung des Sudoku-Gitters.
+            str: The ASCII representation of the Sudoku grid.
         """
         
         def value_border(possibility_value, value, marked):
@@ -278,15 +278,15 @@ class SudokuMatrix:
         
     def print_matrix(self, i=None, j=None, showPossibilities=False, showCellValues=True):
         """
-        Gibt das Sudoku-Gitter als ASCII-Grafik auf der Konsole aus.
+        Prints the Sudoku grid as an ASCII graphic to the console.
 
-        Optional kann eine bestimmte Zelle (i, j) hervorgehoben werden.
-        Mit showPossibilities=True werden in leeren Zellen die möglichen Werte angezeigt.
+        Optionally, a specific cell (i, j) can be highlighted.
+        If showPossibilities=True, possible values are displayed in empty cells.
 
         Args:
-            i (int, optional): Zeilenindex der zu markierenden Zelle.
-            j (int, optional): Spaltenindex der zu markierenden Zelle.
-            showPossibilities (bool, optional): Zeigt mögliche Werte in leeren Zellen an, wenn True.
+            i (int, optional): Row index of the cell to highlight.
+            j (int, optional): Column index of the cell to highlight.
+            showPossibilities (bool, optional): If True, possible values are shown in empty cells.
         """
         print(self._generate_matrix_string(i, j, showPossibilities, showCellValues))
         
