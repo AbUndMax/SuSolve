@@ -73,7 +73,36 @@ def solve_sudoku(sudoku_matrix):
                and which rows in that columns are not a or b!
             
             """
-            pass
+                    
+            rows = sudoku_matrix.rows
+            found_crosses = [] # saves the "coordinates" of found crosses: (row1, row2, col1, col2)
+            
+            # find crosses (1 & 2)
+            for i in range(8): # range(8) because row number 8 can ONLY build a cross with row 9 and row 9 not with itself!
+                current_num_indices = [index for index, cell in enumerate(rows[i]) if num in cell.possibilities]
+                if len(current_num_indices) != 2: # fullfill condition 1
+                    continue
+                
+                for j in range (i + 1, 9):
+                    compared_num_indices = [index for index, cell in enumerate(rows[j]) if num in cell.possibilities]
+                    if len(compared_num_indices) != 2: # fullfill condition 1
+                        continue
+                    
+                    if current_num_indices == compared_num_indices: # fullfill condition 2
+                        # tuple to save the cross: (row1=i, row2=j, col1=index[0], col2=index[1])
+                        found_crosses.append((i, j, current_num_indices[0], current_num_indices[1]))
+            
+            # eliminate possibilities (3):
+            # loop over the found crosses
+            for a, b, col1, col2 in found_crosses: # a and b are the indices of the rows in which num builds a cross
+                # for each of both columns
+                for c in [col1, col2]: # c is the index of the col in which num possibilities gets removed
+                    col = sudoku_matrix.cols[c]
+                    # loop over each entry and eliminate possibilities for num that are not in row a or b
+                    for i in range(9):
+                        cell = col[i]
+                        if i != a and i != b and num in cell.possibilities:
+                            cell.possibilities.remove(num)
                         
                     
         def y_wing(sudoku_matrix, num):
